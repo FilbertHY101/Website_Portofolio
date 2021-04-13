@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filbert Hardy Yahya</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+    <!-- Loader -->
+    <!-- Akan Muncul Loading Sebelum Masuk Website-->
+    <div class="bg-loader">
+        <div class="loader"></div>
+    </div>
+
+
+    <!-- Header -->
+    <div class="medsos">
+        <div class="container">
+            <ul>
+                <li><a href="https://api.whatsapp.com/send?phone=6283177024125"><i class="fab fa-whatsapp"></i></a></li>
+                <li><a href="https://www.instagram.com/filberthy_101/"><i class="fab fa-instagram"></i></a></li>
+                <li><a href="https://www.facebook.com/filberthy101"><i class="fab fa-facebook"></i></a></li>
+                <li><a href="https://id.quora.com"><i class="fab fa-quora"></i></a></li>
+
+            </ul>
+
+        </div>
+    </div>
+    <header>
+        <div class="container">
+            <h1><a href="index.html">Filbert Hardy Yahya</a></h1>
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li class="active"><a href="bukutamu.html">GUEST BOOK FORM</a></li>
+                <li><a href="daftarbukutamu.html">GUEST BOOK LIST</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </div>
+    </header>
+    
+
+    <!-- Label -->
+    <section class="label">
+        <div class="container">
+            <p>Home / Guest Book Form</p>
+        </div>
+    </section>
+
+
+    <!-- Service -->
+    <section class="service">
+        <div class="container" style="text-align: center;">
+            <fieldset>
+                <legend><h2>GUEST BOOK</h2></legend>
+                <h3>Silahkan isi buku tamu dibawah ini untuk meninggalkan pesan anda!</h3>
+                    <form onsubmit="saveGuestBook()">
+                        <p style="font-size: 20px;">Masukkan Nama Anda</p>
+                        <input type="text" name="nama" id="nama" placeholder="Example">
+                        <p style="font-size: 20px;">Masukkan Email Anda</p>
+                        <input type="text" name="email" id="email" placeholder="Example@gmail.com">
+                        <p style="font-size: 20px;">Masukkan Pesan Anda</p>
+                        <textarea id="pesan" style="height: 80px;" placeholder="Write Your Text Here.."></textarea>
+                        <p></p>
+                        <input type="submit" value="Simpan" class="contact-submit" id="save">
+                    </form>
+                </fieldset>
+                
+    <div id="daftar"></div>
+    <script>
+        let guestBook = [];
+        const saveGuestBook = () =>{
+            let nama = document.getElementById("nama").value;
+            let email = document.getElementById("email").value;
+            let pesan = document.getElementById("pesan").value;
+
+            let people = { nama: nama, email: email, pesan: pesan };
+            let absensilama = localStorage.getItem("guestBook");
+            if(absensilama != null){
+                guestBook = JSON.parse(absensilama); //Mengubah string menjadi object/array
+            }
+            guestBook.push(people);
+            localStorage.setItem("guestBook", JSON.stringify(guestBook)); //mengubah object/array menjadi string
+        }
+
+        const showGuestBook = () =>{
+            let table = document.getElementsByTagName("table")[0];
+
+            let guestbookData = localStorage.getItem("guestBook"); //String
+            if(guestbookData != null){
+                guestbookData  = JSON.parse(guestbookData);
+                guestbookData.forEach(element => {
+                    let row     = table.insertRow();
+                    let colnama  = row.insertCell(0);
+                    let colemail = row.insertCell(1);
+                    let colpesan  = row.insertCell(2);
+
+                    colnama.innerHTML  = element.nama;
+                    colemail.innerHTML = element.email;
+                    colpesan.innerHTML  = element.pesan;
+
+                });
+            }                    
+        }
+    </script>
+
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <small>Copyright &copy; 2021 - <strong>FHY</strong> | All Rights Reserved.</small>
+        </div>
+    </footer>
+
+    <script>
+        $(document).ready(function(){
+            $(".bg-loader").hide();
+        })
+    </script>
+
+</body>
+</html>
