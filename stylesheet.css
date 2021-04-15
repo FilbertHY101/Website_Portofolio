@@ -17,13 +17,13 @@ a {
 .medsos ul li {
     display: inline-block;
     color: white;
-    font-size: 20px;
+    font-size: 25px;
     margin-right: 20px;
     margin: 10px;
 }
 
 .container {
-    width: 80%;
+    width: 95%;
     margin: 0 auto;
 }
 .container::after {
@@ -135,12 +135,12 @@ section h2 {
     float: left;
 }
 .icon {
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
     border: 2px solid;
     border-radius: 50%;
     text-align: center;
-    line-height: 70PX;
+    line-height: 85PX;
     font-size: 35PX;
     margin:0 auto;
 }
@@ -183,6 +183,7 @@ footer {
 
 .label {
     background-color: #148F77;
+    font-size: 18px;
     color: white;
 }
 
